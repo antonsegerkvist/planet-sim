@@ -1,46 +1,42 @@
 //
-//  planet.hpp
+//  planet_planet_3d.hpp
 //  Planet Simulator
 //
 //  Created by Anton Segerkvist on 14/10/16.
 //  Copyright © 2016 anton segerkvist. All rights reserved.
 //
 
-#ifndef planet_hpp
-#define planet_hpp
+#ifndef planet_planet_3d_hpp
+#define planet_planet_3d_hpp
+
+#include "planet_vector_3d.hpp"
+
+namespace Planet
+{
 
 template <typename _type>
-class Planet
+class Planet3D
 {
 public:
   
   /**
    * Constructor.
-   * @param x The initial x position.
-   * @param y The initial y position.
-   * @param z The initial z position.
-   * @param vx
+   * @param mass The mass of the planet.
+   * @param position The position of the planet.
+   * @param velocity The velocity of the planet.
    */
-  Planet(_type mass,
-         _type x,
-         _type y,
-         _type z,
-         _type vx = 0.0,
-         _type vy = 0.0,
-         _type vz = 0.0)
+  Planet3D(_type mass = 0.0,
+           const Vector3D<_type>& position = Vector3D<_type>(),
+           const Vector3D<_type>& velocity = Vector3D<_type>())
   : m_mass(mass)
-  , m_x(x)
-  , m_y(y)
-  , m_z(z)
-  , m_vx(vx)
-  , m_vy(vy)
-  , m_vz(vz)
+  , m_position(position)
+  , m_velocity(velocity)
   { }
   
   /**
    * Destructor.
    */
-  ~Planet()
+  ~Planet3D()
   { }
   
   /**
@@ -53,37 +49,49 @@ public:
    * Get the x coordinate.
    */
   inline _type getX() const
-  { return m_x; }
+  { return m_position.getX(); }
   
   /**
    * Get the y coordinate.
    */
   inline _type getY() const
-  { return m_y; }
+  { return m_position.getY(); }
   
   /**
    * Get the z coordinate.
    */
   inline _type getZ() const
-  { return m_z; }
+  { return m_position.getZ(); }
+  
+  /**
+   * Get the position.
+   */
+  inline const Vector3D<_type>& getPosition() const
+  { return m_position; }
   
   /**
    * Get the velocity in the x direction.
    */
   inline _type getVX() const
-  { return m_vx; }
+  { return m_velocity.getX(); }
   
   /**
    * Get the velocity in the y direction.
    */
   inline _type getVY() const
-  { return m_vy; }
+  { return m_velocity.getY(); }
   
   /**
    * Get the velocity in the z direction.
    */
   inline _type getVZ() const
-  { return m_vz; }
+  { return m_velocity.getZ(); }
+  
+  /**
+   * Get the velocity.
+   */
+  inline const Vector3D<_type>& getVelocity() const
+  { return m_velocity; }
   
   /**
    * Set the mass of the planet.
@@ -95,48 +103,58 @@ public:
    * Set the x position of the planet.
    */
   inline void setX(_type x)
-  { m_x = x; }
+  { m_position.setX(x); }
   
   /**
    * Set the y position of the planet.
    */
   inline void setY(_type y)
-  { m_y = y; }
+  { m_position.setY(y); }
   
   /**
    * Set the z position of the planet.
    */
   inline void setZ(_type z)
-  { m_z = z; }
+  { m_position.setZ(z); }
+  
+  /**
+   * Set the position.
+   */
+  inline void setPosition(const Vector3D<_type>& position)
+  { m_position = position; }
   
   /**
    * Set the velocity in the x direction.
    */
   inline void setVX(_type vx)
-  { m_vx = vx; }
+  { m_velocity.setX(vx); }
   
   /**
    * Set the velocity in the y direction.
    */
   inline void setVY(_type vy)
-  { m_vy = vy; }
+  { m_velocity.setY(vy); }
   
   /**
    * Set the velocity in the z direction.
    */
   inline void setVZ(_type vz)
-  { m_vz = vz; }
+  { m_velocity.setZ(vz); }
+  
+  /**
+   * Set the velocity.
+   */
+  inline void setVelocity(const Vector3D<_type>& velocity)
+  { m_velocity = velocity; }
   
 private:
   
   _type m_mass;
-  _type m_x;
-  _type m_y;
-  _type m_z;
-  _type m_vx;
-  _type m_vy;
-  _type m_vz;
+  Vector3D<_type> m_position;
+  Vector3D<_type> m_velocity;
   
 };
 
-#endif /* planet_hpp */
+}; /* namespace Planet */
+  
+#endif /* planet3d_hpp */
