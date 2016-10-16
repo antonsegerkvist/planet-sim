@@ -15,6 +15,7 @@
 
 int main(int argc, const char** argv)
 {
+  /*
   // Define parameters.
   double mass = 1.0;
   Planet::Vector3D<double> v1(0, 0, 0);
@@ -60,4 +61,28 @@ int main(int argc, const char** argv)
   c2.print();
   std::cout << "---" << std::endl;
   c3.print();
+  */
+  
+  double mass = 1.0;
+  Planet::Vector3D<double> v1(+1, +0, +0);
+  Planet::Vector3D<double> v2(-1, +0, +0);
+  Planet::Vector3D<double> v3(+0, +1, +0);
+  Planet::Vector3D<double> v4(+0, -1, +0);
+  Planet::Context3D<double> c(0.8);
+  
+  c.addPlanet(Planet::Planet3D<double>(mass, v1, v3));
+  c.addPlanet(Planet::Planet3D<double>(mass, v2, v4));
+  c.addPlanet(Planet::Planet3D<double>(mass, v3, v2));
+  c.addPlanet(Planet::Planet3D<double>(mass, v4, v1));
+  
+  c.print();
+  for(int i=0; i<60*100; ++i)
+  {
+    Planet::Physics3D<double>::UpdateRungeKutta(c, 1.0 / 60.0);
+    if(i % 20 > 0)
+    {
+      continue;
+    }
+    c.print();
+  }
 }
