@@ -7,6 +7,9 @@ calculations. The source code currently have no dependencies.
 - Heun's method.
 - Runge-Kutta method.
 
+## Example
+![alt text](https://github.com/antonsegerkvist/planet_simulator/blob/master/script/testnew.gif "Runge Kutta Example")
+
 ## Further Notes
 The code is not currenly implemented to be fast or memory efficient.
 Maybe something to fix in the future.
