@@ -45,6 +45,12 @@ public:
   { }
   
   /**
+   * Get the planetary constant.
+   */
+  inline _type getConstant() const
+  { return m_constant; }
+  
+  /**
    * Add a planet to the context.
    */
   inline void addPlanet(const Planet3D<_type>& planet)

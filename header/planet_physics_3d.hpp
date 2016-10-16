@@ -74,7 +74,7 @@ template <typename _type>
   for(size_t i=0; i<context.m_mass.size(); ++i)
   {
     context.m_position[i] = context.m_position[i] + context.m_velocity[i] * time;
-    context.m_velocity[i] = context.m_velocity[i] + buffer[i] * time;
+    context.m_velocity[i] = context.m_velocity[i] + context.getConstant() * buffer[i] * time;
   }
 }
   
@@ -101,7 +101,7 @@ template <typename _type>
   for(size_t i=0; i<context.m_mass.size(); ++i)
   {
     context.m_position[i] = context.m_position[i] + context.m_velocity[i] * time;
-    context.m_velocity[i] = context.m_velocity[i] + (time / 2.0) * (buffer2[i] + buffer3[i]);
+    context.m_velocity[i] = context.m_velocity[i] + context.getConstant() * (time / 2.0) * (buffer2[i] + buffer3[i]);
   }
 }
   
@@ -145,7 +145,7 @@ template <typename _type>
   {
     context.m_position[i] = context.m_position[i] + context.m_velocity[i] * time;
     context.m_velocity[i] = context.m_velocity[i] +
-                            (time / 6.0) * (buffer2[i] + buffer3[i] * 2 + buffer4[i] * 2 + buffer5[i]);
+    context.getConstant() * (time / 6.0) * (buffer2[i] + buffer3[i] * 2 + buffer4[i] * 2 + buffer5[i]);
   }
 }
 
